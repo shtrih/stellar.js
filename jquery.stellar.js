@@ -73,7 +73,7 @@
 				prop;
 
 			for (prop in style) {
-				if (prefixes.test(prop)) {
+				if (style.hasOwnProperty(prop) && prefixes.test(prop)) {
 					prefix = prop.match(prefixes)[0];
 					break;
 				}
@@ -131,14 +131,14 @@
 		this.options = $.extend({}, defaults, options);
 
 		this._defaults = defaults;
-		this._name = pluginName;
+		this.name = pluginName;
 
 		this.init();
 	}
 
 	Plugin.prototype = {
 		init: function() {
-			this.options.name = pluginName + '_' + Math.floor(Math.random() * 1e9);
+			this.name = pluginName + '_' + Math.floor(Math.random() * 1e9);
 
 			this._defineElements();
 			this._defineGetters();
@@ -292,8 +292,8 @@
 
 				// Ensure this element isn't already part of another scrolling element
 				if (!$this.data('stellar-elementIsActive')) {
-					$this.data('stellar-elementIsActive', this);
-				} else if ($this.data('stellar-elementIsActive') !== this) {
+					$this.data('stellar-elementIsActive', self.name);
+				} else if ($this.data('stellar-elementIsActive') !== self.name) {
 					return;
 				}
 
@@ -393,8 +393,8 @@
 
 				// Ensure this element isn't already part of another scrolling element
 				if (!$this.data('stellar-backgroundIsActive')) {
-					$this.data('stellar-backgroundIsActive', this);
-				} else if ($this.data('stellar-backgroundIsActive') !== this) {
+					$this.data('stellar-backgroundIsActive', self.name);
+				} else if ($this.data('stellar-backgroundIsActive') !== self.name) {
 					return;
 				}
 
