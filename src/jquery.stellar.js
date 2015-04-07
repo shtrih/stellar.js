@@ -64,7 +64,7 @@
 				prop;
 
 			for (prop in style) {
-				if (prefixes.test(prop)) {
+				if (style.hasOwnProperty(prop) && prefixes.test(prop)) {
 					prefix = prop.match(prefixes)[0];
 					break;
 				}
