@@ -283,8 +283,8 @@
 
 				// Ensure this element isn't already part of another scrolling element
 				if (!$this.data('stellar-elementIsActive')) {
-					$this.data('stellar-elementIsActive', this);
-				} else if ($this.data('stellar-elementIsActive') !== this) {
+					$this.data('stellar-elementIsActive', self.name);
+				} else if ($this.data('stellar-elementIsActive') !== self.name) {
 					return;
 				}
 
@@ -384,8 +384,8 @@
 
 				// Ensure this element isn't already part of another scrolling element
 				if (!$this.data('stellar-backgroundIsActive')) {
-					$this.data('stellar-backgroundIsActive', this);
-				} else if ($this.data('stellar-backgroundIsActive') !== this) {
+					$this.data('stellar-backgroundIsActive', self.name);
+				} else if ($this.data('stellar-backgroundIsActive') !== self.name) {
 					return;
 				}
 
